@@ -113,6 +113,7 @@ ROC cuve with AUC=0.99		|   Accuracy, recall, precison, f1 = 94%, 92%, 95%, 94%
 
 It seems like our one-feature model worked really well under logistic regression. However, it is computationally expensive when the number of features and sample size become large. As Russian phyicist Landau said, the most important part of doing pysics is the knowledge of approximation. If we replace sigmoid function by a straightline and the intercept of straightline and sigmoid curvature coincides with threshold. The prediction is the same as the one from complex sigmoid function.
 
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;h(x) = \frac{1}{1+e^{-x}}"  />
 $$ h(x) = \frac{1}{1+e^{-x}} $$
 
 
