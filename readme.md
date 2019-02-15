@@ -1,8 +1,7 @@
-<!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script> -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> -->
 
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"</script>
 
 
 
@@ -131,7 +130,7 @@ The rightplot shows the sigmoid function from sklearn and statsmodel. Statmodel 
 
 Maybe we should try out our own recipe to train our model.
 
-For one feature model, we have \\( z_i = \theta_0  + \theta_1 * x_i, \\\\\\). Plug it into cost function and its gradient,
+For one feature model, we have \\( z_i = \theta_0  + \theta_1 * x_i, \\). Plug it into cost function and its gradient,
 
 $$
 \begin{align}
@@ -193,7 +192,7 @@ Secondly, features of voice sample are mostly concerning frequencies. Accordingl
 
 ## Acknowledgement
 
-I want to thank Frank, Erin, Kayla and Danny for their endless support and guidance.
+I want to thank Frank, Erin, Kayla and Danny for their support and guidance.
 
 
 
