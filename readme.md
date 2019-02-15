@@ -1,7 +1,7 @@
 <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script> -->
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script> -->
 <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script> -->
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}"  />
+<!-- <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}"  /> -->
 
 
 # Identify gender of a voice
@@ -114,8 +114,8 @@ ROC cuve with AUC=0.99		|   Accuracy, recall, precison, f1 = 94%, 92%, 95%, 94%
 It seems like our one-feature model worked really well under logistic regression. However, it is computationally expensive when the number of features and sample size become large. As Russian phyicist Landau said, the most important part of doing pysics is the knowledge of approximation. If we replace sigmoid function by a straightline and the intercept of straightline and sigmoid curvature coincides with threshold. The prediction is the same as the one from complex sigmoid function.
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;h(x)=\frac{1}{1+e^{-x}}"  />
-<!-- $$ h(x) = \frac{1}{1+e^{-x}} $$ -->
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}"  />
+
+
 
 Replace sigmoid function by a straightline	|   Comparison of sklearn and statsmodel           
 :------------------------------------------:|:-------------------------:
@@ -130,23 +130,22 @@ The rightplot shows the sigmoid function from sklearn and statsmodel. Statmodel 
 
 Maybe we should try out our own recipe to train our model.
 
-For one feature model, we have \\( z_i = \theta_0  + \theta_1 * x_i, \\). Plug it into cost function and its gradient,
+For one feature model, we have <img src="https://latex.codecogs.com/svg.latex?\Large&space;z_i=\theta_0+\theta_1*x_i"  />. Plug it into cost function and its gradient,
 
-$$
-\begin{align}
-&J = -\sum_{i=1}^n y_i \log(h(z_i)) + (1 - y_i) \log(1-h(z_i)) \\\\
-&\text{grad} = \sum_{i=1}^n (h(z_i) - y_i) x_{ij}
-\end{align}
-$$
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;J=-\sum_{i=1}^ny_i\log(h(z_i))+(1 - y_i)\log(1-h(z_i))"  />
 
-Update cofficient at each step \\( \theta = \theta - \alpha\*\text{grad} \\) until cost function \\(J\\) reaches the minimum.
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;\text{grad}=\sum_{i=1}^n(h(z_i) - y_i)x_{ij}"  />
+
+
+
+Update cofficient at each step <img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta=\theta-\alpha\*\text{grad}"  /> until cost function <img src="https://latex.codecogs.com/svg.latex?\Large&space;J"  /> reaches the minimum.
 
 
 <img src="images/gradient.jpg"  ></img>
 
 Since the learning rate is large, the cost funtion oscillates crazily in the first 200 iterations. However, it converges very fast and reaches minimum with 430 iterations. The final coefficients obtained are very closed to the results from statsmodel.
 
-|                  | \\(\theta_0\\) | \\(\theta_1\\) |
+|                  | <img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta_0"  /> | <img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta_1"  /> |
 |------------------|----------------|----------------|
 | statsmodel       | 27.9           | -197           |
 | gradient descent | 30.9           | -218           |
@@ -158,7 +157,7 @@ Not too bad. But Bayesians are not satisified. Why coefficients are fixed?
 
 ## 3. Perspective from Baysian
 
-Indeed, different samples lead to dfferent coefficients. How do you determine which set of coeffcients is more reliable than others? From Bayesians perspective, one need to provide a set of prior coefficients and throw them into "Bayesian machine" [ \\(p(a|b) \propto p(a)\*p(b|a)\\) ] to trade for a set of posteriors. For conjugate prior with normal distribution, posteriors also form a normal distribution. The following plot show the distributions of two coefficients in our one-feature logistic regression model by using PYMC3.
+Indeed, different samples lead to dfferent coefficients. How do you determine which set of coeffcients is more reliable than others? From Bayesians perspective, one need to provide a set of prior coefficients and throw them into "Bayesian machine" [ <img src="https://latex.codecogs.com/svg.latex?\Large&space;(p(a|b) \propto p(a)\*p(b|a)"  /> ] to trade for a set of posteriors. For conjugate prior with normal distribution, posteriors also form a normal distribution. The following plot show the distributions of two coefficients in our one-feature logistic regression model by using PYMC3.
 
 <img src="images/bayes.jpg"  ></img>
 
@@ -169,7 +168,7 @@ Consequently, coefficients are defined within a given credible intervel e.g. 95%
 | Intercept | 26.623403   | 1.100775 | 24.490103   | 28.815384   |
 | mean_fun  | -188.133888 | 7.817397 | -203.762016 | -173.143236 |
 
-By passing our one-feature dataset into the "bayesian machine", it is 97.5% credible to say that \\(\theta_0=28.8\\) and \\(\theta_1 = -173.1\\).
+By passing our one-feature dataset into the "bayesian machine", it is 97.5% credible to say that <img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta_0=28.8"  /> and <img src="https://latex.codecogs.com/svg.latex?\Large&space;\theta_1 = -173.1"  />
 
 Note that hpd = highest posterior density = credible interval.
 
