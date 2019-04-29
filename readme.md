@@ -55,14 +55,14 @@ The features with strong correlated character is more likely to help to differen
 
 Because the difference of mean fundamental frequency between female and male is extremely significant (P_value=0)
 
-```
+```python
 t, p = stats.ttest_ind(df[ df['male']==1]['meanfun'], df[ df['male']==0]['meanfun'], equal_var=False)
 ```
 
 
 Or there is a 98.90% probability that mean fundamental frequency of female is higher than male(from Bayesians).	
 
-```
+```python
 def bayesian_ab(a, b, num):
     male = a.sample(num).values
     female = b.sample(num).values
